@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+        <script src="main.js" type="application/javascript"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?&family=Kanit:wght@500&display=swap');
+            body{
+                margin: 0px;
+            }
+            span, p {
+                color:gainsboro;
+                font-size: 2rem;
+                font-family: 'Kanit', sans-serif;
+            }
+            .main-info {
+                display: flex;
+                height: 100vh;
+                align-items: center;
+                justify-content: center;
+                background-color: black;
+                margin: 0px;
+            }
+        </style>
+        <title>PancakeSwap Router - Price check</title>
+    </head>
+    <body>
+        <div class="main-info">
+            <table>
+                <tr>
+                    <td><span id="main-text-bnb">0.00</span></td>
+                    <td><p>BNB</p></td>
+                </tr>
+                <tr>
+                    <td><span id="main-text-btc">0.00</span></td>
+                    <td><p>BTC</p></td>
+                </tr>
+                <tr>
+                    <td><span id="main-text-eth">0.00</span></td>
+                    <td><p>ETH</p></td>
+                </tr>
+                <tr>
+                    <td><span id="main-text-ada">0.00</span></td>
+                    <td><p>ADA</p></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

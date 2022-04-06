@@ -7,11 +7,10 @@ const CONTRACTS = {
     'BTCB': '0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c',
     'ADA' : '0x3ee2200efb3400fabb9aacf31297cbdd1d435d47'
 }
-let provider, router;
+const provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
+const router = new ethers.Contract( CONTRACTS['PCS_ROUTER'], ['function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts)', 'function symbol() external view returns (string memory)'], provider);
 
 const main = async function() {
-    provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
-    router = new ethers.Contract( CONTRACTS['PCS_ROUTER'], ['function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts)', 'function symbol() external view returns (string memory)'], provider);
     updatePrice('main-text-bnb',  [CONTRACTS['WBNB'], CONTRACTS['BUSD']]);
     updatePrice('main-text-eth',  [CONTRACTS['ETH'], CONTRACTS['BUSD']]);
     updatePrice('main-text-btc',  [CONTRACTS['BTCB'], CONTRACTS['BUSD']]);

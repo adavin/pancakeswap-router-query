@@ -11,15 +11,15 @@ const provider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.bina
 const router = new ethers.Contract( CONTRACTS['PCS_ROUTER'], ['function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts)', 'function symbol() external view returns (string memory)'], provider);
 
 const main = async function() {
-    updatePrice('main-text-bnb',  [CONTRACTS['WBNB'], CONTRACTS['BUSD']]);
-    updatePrice('main-text-eth',  [CONTRACTS['ETH'], CONTRACTS['BUSD']]);
-    updatePrice('main-text-btc',  [CONTRACTS['BTCB'], CONTRACTS['BUSD']]);
-    updatePrice('main-text-ada',  [CONTRACTS['ADA'], CONTRACTS['BUSD']]);
+    updatePrice('main-text-bnb', 'WBNB');
+    updatePrice('main-text-eth', 'ETH');
+    updatePrice('main-text-btc', 'BTCB');
+    updatePrice('main-text-ada', 'ADA');
     setTimeout(main, 5000);
 }   
 
 const updatePrice = async function(elementId, contracts) {
-    let price = await router.getAmountsOut(ethers.utils.parseUnits('1.0', 'ether'),contracts);
+    let price = await router.getAmountsOut(ethers.utils.parseUnits('1.0', 'ether'),[CONTRACTS[contracts],CONTRACTS['BUSD']]);
     document.getElementById(elementId).innerHTML = parseFloat(ethers.utils.formatEther(price[1])).toFixed(4).toLocaleString("en-US");
 }
 
